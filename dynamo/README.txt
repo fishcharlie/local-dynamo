@@ -1,27 +1,29 @@
 README
 ========
 
-For an overview of DynamoDB Local please refer to the documentation at http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tools.html 
+For an overview of DynamoDB Local please refer to the documentation at http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tools.DynamoDBLocal.html
 
-Enhancements in this release 
+
+
+Release Notes
 -----------------------------
 
-This release provides support for in-memory execution and ability to provide the database file location. 
+2017-01-24 (1.11.86)
 
-DynamoDB Local added support for Global Secondary Indexes (GSI) in 2013-12-12 release. This release includes a fix for GSI query as reported by some customers. For an overview on GSI, refer to the documentation at http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.html
+  * Implement waiters() method in LocalDynamoDBClient
+  * Update aws libs to 1.11.86
+  * Enable WARN logging for SQLite
 
-Running DynamoDB Local 
------------------------
 
-This release adds additional command line parameters. 
-java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar [-port <port-no.>] [-inMemory] [-dbPath <path>]
+2016-05-17_1.0
 
-Available Options:
- -dbPath <path>     Specify the location of your database file. Default is
-                    the current directory.
- -inMemory          When specified, DynamoDB Local will run in memory.
- -port <port-no.>   Specify a port number. Default is 8000
- -help              Display DynamoDB Local usage and options.
+  * Bug fix for Query validation preventing primary key attributes in query filter expressions
 
-Note that -inMemory and -dbPath options cannot be used together.
+Running DynamoDB Local
+---------------------------------------------------------------
 
+java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar [options]
+
+For more information on available options, run with the -help option:
+
+  java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -help
